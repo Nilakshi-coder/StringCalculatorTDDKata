@@ -66,5 +66,8 @@ public class StringCalculatorTest {
 		assertEquals(6, calculator.Add("//[**]\n1**2**3"));
 	}
 	
-	
+	@Test
+	public void supportMultipleDelimiters() {
+		assertEquals(6, calculator.Add("//[*][#]\n1*2#3"));
+	}	
 }

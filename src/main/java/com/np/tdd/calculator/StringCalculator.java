@@ -1,6 +1,7 @@
 package com.np.tdd.calculator;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,6 +54,11 @@ public class StringCalculator {
 	
 	public void getCustomDelimiter(String delPattern) {
 		customDelimiter = delPattern.replace(customDelimiterIdentifier,"");
+		
+		if(customDelimiter.contains("[")) {
+			customDelimiter = customDelimiter.substring(1,customDelimiter.length()-1);
+			customDelimiter = Arrays.stream(customDelimiter.split("]\\[")).map(Pattern::quote).collect(Collectors.joining("|"));
+		}
 	}
 
 }

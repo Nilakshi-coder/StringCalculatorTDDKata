@@ -27,7 +27,7 @@ public class StringCalculator {
 	
 	public int sum(int[] numbers) {
 		checkForNegativeNumbers(numbers);
-		return Arrays.stream(numbers).sum();
+		return Arrays.stream(numbers).filter(n->n<=1000).sum();
 	}
 
 	public void checkForNegativeNumbers(int[] numbers) {

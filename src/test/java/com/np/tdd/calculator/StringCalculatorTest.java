@@ -55,4 +55,9 @@ public class StringCalculatorTest {
 			assertEquals("Negatives are not allowed: -2,-1", e.getMessage().toString());
 		}
 	}
+	
+	@Test
+	public void ignoreNumbersGreaterThan1000() {
+		assertEquals(4, calculator.Add("1\n1003\n1004,3"));
+	}
 }

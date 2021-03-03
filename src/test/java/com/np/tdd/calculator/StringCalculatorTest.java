@@ -29,5 +29,10 @@ public class StringCalculatorTest {
 	public void twoNumbers_ReturnsSumOfTwoNumbers() {
 		assertEquals(3, calculator.Add("1,2"));
 	}
+	
+	@Test
+	public void moreThanTwoNumbers_ReturnsSumOfAllNumbers() {
+		assertEquals(5, calculator.Add("1,2,2"));
+	}
 
 }

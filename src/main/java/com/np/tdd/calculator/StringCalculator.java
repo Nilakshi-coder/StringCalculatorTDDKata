@@ -5,6 +5,8 @@ import java.util.stream.Stream;
 
 public class StringCalculator {
 	
+	private static final String defaultDelimiter = ",|\n";
+
 	public int Add(String numbers) {
 		if(numbers.isEmpty())
 			return 0;
@@ -13,7 +15,7 @@ public class StringCalculator {
 	}
 	
 	public int getSum(String numbers) {
-		return Arrays.stream(numbers.split(",")).filter(n->!n.isEmpty()).mapToInt(Integer::parseInt).sum();
+		return Arrays.stream(numbers.split(defaultDelimiter)).filter(n->!n.isEmpty()).mapToInt(Integer::parseInt).sum();
 	}
 
 }

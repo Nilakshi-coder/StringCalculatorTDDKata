@@ -34,5 +34,10 @@ public class StringCalculatorTest {
 	public void moreThanTwoNumbers_ReturnsSumOfAllNumbers() {
 		assertEquals(5, calculator.Add("1,2,2"));
 	}
+	
+	@Test
+	public void newLineCharAsDelimiter() {
+		assertEquals(6, calculator.Add("1\n2,3"));
+	}
 
 }

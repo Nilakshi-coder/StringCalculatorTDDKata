@@ -12,7 +12,7 @@ public class StringCalculatorTest {
 	@Before
 	public void init() {
 		calculator = new StringCalculator();
-		System.out.println(calculator.toString());
+		//System.out.println(calculator.toString());
 	}
 
 	@Test
@@ -43,5 +43,16 @@ public class StringCalculatorTest {
 	@Test
 	public void supportDifferentDelimiters() {
 		assertEquals(6, calculator.Add("//;\n1;2;3"));
+	}
+	
+	@Test
+	public void negativeInputThrowsException() {
+		try {
+			String input="//;\n-2;3;-1";
+			calculator.Add(input);
+		}catch(IllegalArgumentException e) {
+			//System.out.println(e.getMessage());
+			assertEquals("Negatives are not allowed: -2,-1", e.getMessage().toString());
+		}
 	}
 }

@@ -61,6 +61,7 @@ public class StringCalculatorTest {
 		assertEquals(4, calculator.Add("1\n1003\n1004,3"));
 	}
 	
+	@Test
 	public void supportDelimitersOfArbitraryLength() {
 		assertEquals(6, calculator.Add("//[**]\n1**2**3"));
 	}

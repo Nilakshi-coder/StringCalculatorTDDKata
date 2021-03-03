@@ -52,7 +52,7 @@ public class StringCalculator {
 	}
 	
 	public void getCustomDelimiter(String delPattern) {
-		customDelimiter = delPattern.substring(2,3);
+		customDelimiter = delPattern.replace(customDelimiterIdentifier,"");
 	}
 
 }

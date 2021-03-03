@@ -19,6 +19,26 @@ public class StringCalculator {
 			return getSum(numbers);			
 	}
 	
+	public int getSum(String numbers) {
+		if(numbers.startsWith(customDelimiterIdentifier)) {
+			String[] parts = numbers.split(newLineChar,2);
+			getCustomDelimiter(parts[0]);
+			
+			int[] noArray = getNumbersExcludingDelimiters(parts[1],customDelimiter);
+			return sum(noArray);
+		}else
+			return sum(getNumbersExcludingDelimiters(numbers,defaultDelimiter));
+	}
+	
+	public void getCustomDelimiter(String delPattern) {
+		customDelimiter = delPattern.replace(customDelimiterIdentifier,"");
+		
+		if(customDelimiter.contains("[")) {
+			customDelimiter = customDelimiter.substring(1,customDelimiter.length()-1);
+			customDelimiter = Arrays.stream(customDelimiter.split("]\\[")).map(Pattern::quote).collect(Collectors.joining("|"));
+		}
+	}
+	
 	public int[] getNumbersExcludingDelimiters(String numbers, String delimitertype) {
 		return Arrays.stream(numbers.split(delimitertype))
 				.filter(n->!n.trim().isEmpty())
@@ -40,25 +60,4 @@ public class StringCalculator {
 			throw new IllegalArgumentException("Negatives are not allowed: "+negativeNumbers);
 		}
 	}
-	
-	public int getSum(String numbers) {
-		if(numbers.startsWith(customDelimiterIdentifier)) {
-			String[] parts = numbers.split(newLineChar,2);
-			getCustomDelimiter(parts[0]);
-			
-			int[] noArray = getNumbersExcludingDelimiters(parts[1],customDelimiter);
-			return sum(noArray);
-		}else
-			return sum(getNumbersExcludingDelimiters(numbers,defaultDelimiter));
-	}
-	
-	public void getCustomDelimiter(String delPattern) {
-		customDelimiter = delPattern.replace(customDelimiterIdentifier,"");
-		
-		if(customDelimiter.contains("[")) {
-			customDelimiter = customDelimiter.substring(1,customDelimiter.length()-1);
-			customDelimiter = Arrays.stream(customDelimiter.split("]\\[")).map(Pattern::quote).collect(Collectors.joining("|"));
-		}
-	}
-
 }
